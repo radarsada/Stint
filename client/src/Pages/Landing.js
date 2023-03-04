@@ -1,17 +1,17 @@
 import React from "react";
-import Logo from "../assets/images/logo.png";
-import main from "../assets/images/main.png";
+import logo from "../assets/images/logo.svg";
+import main from "../assets/images/main.svg";
 import Wrapper from "../assets/Wrappers/Testing";
-function Landing() {
+const Landing = () => {
   return (
     <Wrapper>
       <nav>
-        <img src={Logo} alt="job hunt" className="img main-img" />
+        <img src={logo} alt="jobify" className="logo"></img>
       </nav>
       <div className="container page">
         <div className="info">
           <h1>
-            Job <span>tracking</span> app
+            job <span>tracking</span> app
           </h1>
           <p>
             Work helps you gain a sense of pride and self-satisfaction by
@@ -20,13 +20,12 @@ function Landing() {
             becoming more common to see people with disabilities in a wide range
             of jobs throughout the community
           </p>
-
           <button className="btn btn-hero">Login/Register</button>
-          <img src={main} alt="job hunt" className="img main-img" />
         </div>
+        <img src={main} alt="job hunt" className="img main-img" />
       </div>
     </Wrapper>
   );
-}
+};
 
 export default Landing;

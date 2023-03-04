@@ -1,5 +1,4 @@
-import Landing from "./Pages/Landing.js";
-
+import Landing from "../src/Pages/Landing";
 function App() {
   return (
     <div className="App">
