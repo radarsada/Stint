@@ -2,6 +2,7 @@ import React from "react";
 import Logo from "../Components/Logo";
 import main from "../assets/images/main.svg";
 import Wrapper from "../assets/Wrappers/Testing";
+import { Link } from "react-router-dom";
 const Landing = () => {
   return (
     <Wrapper>
@@ -20,7 +21,9 @@ const Landing = () => {
             becoming more common to see people with disabilities in a wide range
             of jobs throughout the community
           </p>
-          <button className="btn btn-hero">Login/Register</button>
+          <Link to="/register" className="btn btn-hero">
+            Login/Register
+          </Link>
         </div>
         <img src={main} alt="job hunt" className="img main-img" />
       </div>
