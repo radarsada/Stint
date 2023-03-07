@@ -34,7 +34,9 @@ const Register = () => {
             className="form-input"
           ></input>
         </div>
-        <button type="submit" className="btn btn-block"></button>
+        <button type="submit" className="btn btn-block">
+          Submit
+        </button>
       </form>
     </Wrapper>
   );
