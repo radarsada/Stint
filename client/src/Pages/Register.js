@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Logo, FormRow } from "../Components";
+import { Logo, FormRow, Alert } from "../Components";
 import Wrapper from "../assets/Wrappers/RegisterPage";
+import { useAppContext } from "../Context/appContext";
 const initialState = {
   name: "",
   email: "",
@@ -9,25 +10,41 @@ const initialState = {
 };
 const Register = () => {
   const [values, setvalues] = useState(initialState);
+  // global state and UseNavigate
+
+  const { isLoading, showAlert, displayAlert } = useAppContext();
+
+  const toggleMember = () => {
+    setvalues({ ...values, isMember: !values.isMember });
+  };
   const handleChange = (e) => {
-    console.log(e.target);
+    // setvalues(e.target.value);
+    setvalues({ ...values, [e.target.name]: e.target.value });
   };
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(e.target);
+    const { name, email, password, isMember } = values;
+    if (!email || !password || (!isMember && !name)) {
+      displayAlert();
+      return;
+    }
+    console.log(values);
   };
   return (
     <Wrapper className="full-page">
       <form className="form" onSubmit={onSubmit}>
         <Logo />
-        <h3>Login</h3>
+        <h3>{values.isMember ? "Login" : "Register"}</h3>
+        {showAlert && <Alert />}
         {/* name input */}
-        <FormRow
-          type="text"
-          name="name"
-          value={values.name}
-          handleChange={handleChange}
-        />
+        {!values.isMember && (
+          <FormRow
+            type="text"
+            name="name"
+            value={values.name}
+            handleChange={handleChange}
+          />
+        )}
         {/* email input */}
         <FormRow
           type="email"
@@ -37,7 +54,7 @@ const Register = () => {
         />
         {/* password input */}
         <FormRow
-          type="password"
+          type="current-password"
           name="password"
           value={values.password}
           handleChange={handleChange}
@@ -45,6 +62,12 @@ const Register = () => {
         <button type="submit" className="btn btn-block">
           Submit
         </button>
+        <p>
+          {values.isMember ? "Not a member yet ?" : "Already a member ?"}
+          <button type="button" className="member-btn" onClick={toggleMember}>
+            {values.isMember ? "Register" : "Login"}
+          </button>
+        </p>
       </form>
     </Wrapper>
   );
