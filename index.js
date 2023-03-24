@@ -4,7 +4,7 @@ import dotenv from "dotenv";
 dotenv.config();
 //db &authenticator
 import connectDB from "./db/connect.js";
-
+import "express-async-errors";
 //routes
 import authRouter from "./routes/authRoutes.js";
 import jobRouter from "./routes/jobRoutes.js";
